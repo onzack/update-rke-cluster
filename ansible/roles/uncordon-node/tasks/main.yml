@@ -8,10 +8,10 @@
 - name: "Uncordon worker node"
   local_action: "command {{ kubectl_full_path }} uncordon {{ inventory_hostname }}"
 
-# - name: "Sleep for 5 minutes to allow Longhorn rebuilding"
-#   wait_for:
-#     timeout: 300
-#   delegate_to: localhost
+- name: "Sleep for 10 minutes to allow Longhorn rebuilding"
+  wait_for:
+    timeout: 600
+  delegate_to: localhost
   
 - name: "Remove old and unused docker images"
   command: docker image prune -af
