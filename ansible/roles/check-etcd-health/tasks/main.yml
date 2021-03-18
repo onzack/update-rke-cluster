@@ -1,0 +1,16 @@
+---
+- name: "Copy etcd health check script"
+  copy:
+    src: etcd_healthcheck.bash
+    dest: /usr/local/bin/etcd_healthcheck.bash
+    owner: root
+    group: root
+    mode: 0755
+    backup: no
+
+- name: "Check if etcd is healty with etcd health check script"
+  command: /usr/local/bin/etcd_healthcheck.bash
+  retries: 4
+  delay: 30
+  register: etcdhealth
+  until: etcdhealth.rc == 0

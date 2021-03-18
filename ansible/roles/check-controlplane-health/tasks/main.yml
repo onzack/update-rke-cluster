@@ -1,0 +1,17 @@
+---
+- name: Pause 3 minute for the API to get ready
+  pause:
+    seconds: "180"
+  when: ansible_uptime_seconds < 120
+
+- name: "Check if kube-apiserver is healthy"
+  uri:
+    url: https://127.0.0.1:6443/healthz
+    client_cert: /etc/kubernetes/ssl/kube-apiserver.pem
+    client_key: /etc/kubernetes/ssl/kube-apiserver-key.pem
+    return_content: yes
+    validate_certs: no
+  register: apiserverhealthz
+  until: apiserverhealthz.content.find("ok") != -1
+  retries: 5
+  delay: 60

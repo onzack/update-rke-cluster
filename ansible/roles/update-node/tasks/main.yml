@@ -1,0 +1,7 @@
+---
+- name: "Update cache and upgrade packages"
+  apt:
+    upgrade: "yes"
+    update_cache: "yes"
+    force_apt_get: "yes"
+  when: ansible_os_family == "Debian"

@@ -1,0 +1,42 @@
+---
+- name: Include vars and secrets
+  include_vars: "{{ item }}"
+  with_items:
+    - "roles/rke-secrets/vars/{{ customer }}/{{ customer }}_apps_{{ env }}_secrets.yml"
+    - "vars/{{ customer }}/{{ customer }}_apps_{{ env }}.yml"
+    - "vars/rke/{{ env }}.yml"
+    
+- name: Print target Kubernetes version
+  debug:
+    msg: "{{ rancher_kubernetes_version }}"
+
+- name: Update Kubernetes version of a cluster
+  uri:
+    url: "{{ kubernetes_cluster_url }}"
+    method: PUT
+    body: "{ \"name\":\"{{ cluster_name }}\", \"answers\":{\"values\":{\"rancherKubernetesEngineConfig.kubernetesVersion\":\"{{ rancher_kubernetes_version }}\" }} }"
+    body_format: json
+    validate_certs: no
+    user: "{{ rancher_api_username }}"
+    password: "{{ rancher_api_password }}"
+    force_basic_auth: yes
+    return_content: yes
+  register: return_value
+
+# # Update Tasks if Rancher cluster templates are used
+# - name: Update Kubernetes version of a cluster
+#   uri:
+#     url: "{{ kubernetes_cluster_url }}"
+#     method: PUT
+#     body: "{ \"name\":\"{{ cluster_name }}\", \"answers\":{\"values\":{\"rancherKubernetesEngineConfig.kubernetesVersion\":\"{{ rancher_kubernetes_version }}\"}}, \"clusterTemplateId\":\"{{ rancher_cluster_template_id }}\", \"clusterTemplateRevisionId\":\"{{ rancher_cluster_template_revision_id }}\" }"
+#     body_format: json
+#     validate_certs: no
+#     user: "{{ rancher_api_username }}"
+#     password: "{{ rancher_api_password }}"
+#     force_basic_auth: yes
+#     return_content: yes
+#   register: return_value
+
+- name: Print new Kubernetes version
+  debug:
+    msg: "{{ return_value.json.rancherKubernetesEngineConfig.kubernetesVersion }}"

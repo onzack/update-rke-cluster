@@ -1,0 +1,24 @@
+---
+# # Kubernetes version
+# rancher_kubernetes_version: "v1.18.8-rancher1-1"
+# 
+# # Rancher RKE cluster URL
+# kubernetes_cluster_url: "https://rancher.dmlabs.ch/v3/clusters/c-vh2ns"
+# 
+# # Rancher RKE cluster name
+# cluster_name: "dmlabs-apps-prod"
+
+# # Rancher API credencials
+# rancher_api_username: asdf
+# rancher_api_password: asdf
+
+# Define path to kubectl and kubeconfig
+kubectl_full_path: /usr/bin/kubectl --kubeconfig={{ path_to_kubeconfig }}
+
+# Define drain command with options
+kubectl_drain_command: "{{ kubectl_full_path }} drain --ignore-daemonsets --force --grace-period=150 --timeout=300s --delete-local-data"
+
+# # RKE Cluster Templates
+# rancher_cluster_template_id: "cattle-global-data:ct-asdf"
+# rancher_cluster_template_revision_id: "cattle-global-data:ctr-abcd"
+

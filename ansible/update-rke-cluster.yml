@@ -1,0 +1,30 @@
+---
+- name: Update RKE worker nodes
+  hosts: worker_nodes
+  become: yes
+  become_method: sudo
+  serial: 1
+  roles:
+    - drain-node
+    - update-node
+    - reboot-node
+    - uncordon-node
+
+- name: Update RKE controlplane nodes
+  hosts: controlplane_nodes
+  become: yes
+  become_method: sudo
+  serial: 1
+  roles:
+    - check-etcd-health
+    - check-controlplane-health
+    - update-node
+    - reboot-node
+    - check-etcd-health
+    - check-controlplane-health
+
+- name: Update RKE kubernetes version
+  hosts: localhost
+  tasks:
+    - include_role:
+        name: update-kubernetes-version
