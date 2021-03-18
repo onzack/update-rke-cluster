@@ -13,10 +13,10 @@
 # rancher_api_password: asdf
 
 # Define path to kubectl and kubeconfig
-kubectl_full_path: /usr/bin/kubectl --kubeconfig={{ path_to_kubeconfig }}
+kubectl_full_path: "{{ path_to_kubectl }} --kubeconfig={{ path_to_kubeconfig }}"
 
 # Define drain command with options
-kubectl_drain_command: "{{ kubectl_full_path }} drain --ignore-daemonsets --force --grace-period=150 --timeout=300s --delete-local-data"
+kubectl_drain_command: "{{ kubectl_full_path }} drain --ignore-daemonsets --force --grace-period=150 --timeout=300s --delete-emptydir-data"
 
 # # RKE Cluster Templates
 # rancher_cluster_template_id: "cattle-global-data:ct-asdf"
