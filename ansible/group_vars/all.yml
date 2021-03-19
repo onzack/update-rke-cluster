@@ -22,3 +22,6 @@ kubectl_drain_command: "{{ kubectl_full_path }} drain --ignore-daemonsets --forc
 # rancher_cluster_template_id: "cattle-global-data:ct-asdf"
 # rancher_cluster_template_revision_id: "cattle-global-data:ctr-abcd"
 
+# Pause seconds between worker nodes for example to allow cloud native storage to rebalance
+# Default ist 5, overwrite it with -e
+pause_seconds_between_workers: 5

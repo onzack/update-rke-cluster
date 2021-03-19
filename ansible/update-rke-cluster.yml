@@ -9,6 +9,7 @@
     - update-node
     - reboot-node
     - uncordon-node
+    - pause_between_workers
 
 - name: Update RKE controlplane nodes
   hosts: controlplane_nodes

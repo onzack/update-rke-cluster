@@ -1,0 +1,5 @@
+---
+- name: "Sleep for {{ pause_seconds_between_workers }} seconds, e.g. for storage rebalancing"
+  wait_for:
+    timeout: "{{ pause_seconds_between_workers }}"
+  delegate_to: localhost

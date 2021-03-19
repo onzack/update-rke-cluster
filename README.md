@@ -21,6 +21,7 @@ ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e rancher_api_password="asdf321asdf321asdf321asdf321asdf321asdf321asdf321asdf3" \
   -e path_to_kubectl="/user/bin/kubectl" \
   -e path_to_kubeconfig="/home/ansible/kubeconfig"
+  -e pause_seconds_between_workers=300
 ```
 
 
