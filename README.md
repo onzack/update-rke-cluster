@@ -12,6 +12,7 @@ The playbook uses an affressive drain command for the nodes and the playbook wil
 This early version of the playbook supports only Ubunt oder Debian as operating system.
 # Quick start
 ```
+export PATH_TO_KUBECTL=$(which kubectl)
 git clone https://github.com/onzack/update-rke-cluster.git
 ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
@@ -19,7 +20,7 @@ ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e cluster_name="apps-dev" \
   -e rancher_api_username="token-asdf" \
   -e rancher_api_password="asdf321asdf321asdf321asdf321asdf321asdf321asdf321asdf3" \
-  -e path_to_kubectl="/user/bin/kubectl" \
+  -e path_to_kubectl=$PATH_TO_KUBECTL \
   -e path_to_kubeconfig="/home/ansible/kubeconfig"
   -e pause_seconds_between_workers=300
 ```
