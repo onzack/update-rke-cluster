@@ -4,4 +4,4 @@
     upgrade: "yes"
     update_cache: "yes"
     force_apt_get: "yes"
-  #when: ansible_os_family == "Debian"
+  when: ansible_os_family == "Debian"

@@ -5,7 +5,8 @@
   become_method: sudo
   serial: 1
   tags: worker
-  gather_facts: no
+  gather_facts: yes
+  gather_subset: hardware
   roles:
     - drain-node
     - update-node
@@ -31,7 +32,8 @@
 - name: Update RKE kubernetes version
   hosts: localhost
   tags: kubernetes
-  gather_facts: no
+  gather_facts: yes
+  gather_subset: hardware
   tasks:
     - include_role:
         name: update-kubernetes-version
