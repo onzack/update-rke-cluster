@@ -3,3 +3,4 @@
   wait_for:
     timeout: "{{ pause_seconds_between_workers }}"
   delegate_to: localhost
+  when: ansible_uptime_seconds < 600
