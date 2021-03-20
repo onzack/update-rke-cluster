@@ -59,9 +59,3 @@ ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e rancher_api_password="asdf321asdf321asdf321asdf321asdf321asdf321asdf321asdf3" \
   --tags "kubernetes"
 ```
-
-
-More documentation will follow.
-
-
---tags "configuration,packages"
