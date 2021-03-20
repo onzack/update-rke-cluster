@@ -8,6 +8,10 @@
   reboot:
   when: reboot_required.stat.exists
 
+- name: Collect Ansible facts
+  setup:
+  when: reboot_required.stat.exists
+
 - name: Remove pachages that are not needed any more
   apt:
     autoremove: yes
