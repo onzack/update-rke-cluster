@@ -1,6 +1,12 @@
 ---
-- name: "Reboot"
+- name: Check if /var/run/reboot-required exists
+  stat:
+    path: /var/run/reboot-required
+  register: reboot_required
+
+- name: "Reboot, if required"
   reboot:
+  when: reboot_required.stat.exists
 
 - name: Remove pachages that are not needed any more
   apt:
