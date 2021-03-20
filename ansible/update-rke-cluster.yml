@@ -4,6 +4,7 @@
   become: yes
   become_method: sudo
   serial: 1
+  tags: worker
   roles:
     - drain-node
     - update-node
@@ -16,6 +17,7 @@
   become: yes
   become_method: sudo
   serial: 1
+  tags: controlplane
   roles:
     - check-etcd-health
     - check-controlplane-health
@@ -26,6 +28,7 @@
 
 - name: Update RKE kubernetes version
   hosts: localhost
+  tags: kubernetes
   tasks:
     - include_role:
         name: update-kubernetes-version
