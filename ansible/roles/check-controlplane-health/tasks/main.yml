@@ -1,4 +1,7 @@
 ---
+- name: Collect Ansible facts
+  setup:
+
 - name: Pause 3 minute for the API to get ready
   pause:
     seconds: "180"

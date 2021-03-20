@@ -1,9 +1,6 @@
 ---
 - name: "Reboot"
   reboot:
-  
-- name: Collect Ansible facts after reboot
-  setup:
 
 - name: Remove pachages that are not needed any more
   apt:
