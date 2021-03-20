@@ -10,7 +10,7 @@
 
 - name: Collect Ansible facts
   setup:
-  gather_subset: hardware
+    gather_subset: hardware
   when: reboot_required.stat.exists
 
 - name: Remove pachages that are not needed any more
