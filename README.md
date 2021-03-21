@@ -1,6 +1,8 @@
 # Update RKE cluster
 Update Rancher Kubernetes Engine clusters built with Rancher.
 
+![Upadte RKE cluster visualization ](https://github.com/onzack/update-rke-cluster/blob/main/update-rke-cluster.png)
+
 # Comments
 The Ansible playbook pauses for about 10 Minutes between each worker node to give Longhorn or any other cloud native storage the change to rebalance.  
 
