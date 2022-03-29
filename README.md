@@ -9,7 +9,7 @@ The Ansible playbook pauses for about 10 Minutes between each worker node to giv
 The playbooks handles etcd and control plane nodes the same way.  
 
 # WARNING
-The playbook uses an affressive drain command for the nodes and the playbook will contunue even if the drain command was not successful. Updates are prioritized higher then pod availability.  
+The playbook uses an aggressive drain command for the nodes and the playbook will contunue even if the drain command was not successful. Updates are prioritized higher then pod availability.  
 
 This early version of the playbook supports only Ubunt oder Debian as operating system.
 # Quick start
