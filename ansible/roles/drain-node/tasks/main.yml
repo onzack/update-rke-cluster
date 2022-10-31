@@ -2,7 +2,7 @@
 - name: "Drain worker node with 2.5 minutes grace-period and timeout after 5 minutes"
   local_action: "command {{ kubectl_drain_command }} {{ inventory_hostname }}"
   register: drainresult
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: "Print warning if drain node was not successful"
   debug:

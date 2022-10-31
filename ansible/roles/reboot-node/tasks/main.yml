@@ -17,5 +17,5 @@
 - name: Remove pachages that are not needed any more
   apt:
     autoremove: yes
-  ignore_errors: yes
+  ignore_errors: true
   when: ansible_facts['os_family'] == "Debian"

@@ -1,0 +1,15 @@
+---
+- name: Copy apt-preferences file for docker.io if docker_version is defined
+  copy:
+    dest: /etc/apt/preferences.d/docker
+    content: |
+      Package: docker.io
+      Pin: version {{ docker_version }}
+      Pin-Priority: 1001
+  when: ansible_distribution == "Ubuntu" and docker_version is defined
+
+- name: Remove apt-preferences file for docker.io if docker_version is not defined
+  file:
+    path: /etc/apt/preferences.d/docker
+    state: absent
+  when: ansible_distribution == "Ubuntu" and docker_version is not defined

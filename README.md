@@ -4,14 +4,14 @@ Update Rancher Kubernetes Engine clusters built with Rancher.
 ![Upadte RKE cluster visualization ](https://github.com/onzack/update-rke-cluster/blob/main/update-rke-cluster-blueprint.png)
 
 # Comments
-The Ansible playbook pauses for about 10 Minutes between each worker node to give Longhorn or any other cloud native storage the change to rebalance. Change the duration with pause_seconds_between_workers.
+The Ansible playbook pauses for about 10 Minutes between each worker node to give Longhorn or any other cloud native storage the chance to rebalance. Change the duration with pause_seconds_between_workers.
 
 The playbooks handles etcd and control plane nodes the same way.  
 
 # WARNING
 The playbook uses an aggressive drain command for the nodes and the playbook will contunue even if the drain command was not successful. Updates are prioritized higher then pod availability.  
 
-This early version of the playbook supports only Ubunt oder Debian as operating system.
+This early version of the playbook supports only Ubuntu or Debian as operating system.
 # Quick start
 Update all nodes and the kubernetes version:  
 ```
@@ -25,6 +25,7 @@ ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e rancher_api_password="asdf321asdf321asdf321asdf321asdf321asdf321asdf321asdf3" \
   -e path_to_kubectl=$PATH_TO_KUBECTL \
   -e path_to_kubeconfig="/home/ansible/kubeconfig"
+  -e docker_version="20.10.12*" \
   -e pause_seconds_between_workers=300
 ```
 
@@ -36,6 +37,7 @@ ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e path_to_kubectl=$PATH_TO_KUBECTL \
   -e path_to_kubeconfig="/home/ansible/kubeconfig"
   -e pause_seconds_between_workers=300
+  -e docker_version="20.10.12*" \
   --tags "worker"
 ```
 
@@ -46,6 +48,7 @@ git clone https://github.com/onzack/update-rke-cluster.git
 ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e path_to_kubectl=$PATH_TO_KUBECTL \
   -e path_to_kubeconfig="/home/ansible/kubeconfig"
+  -e docker_version="20.10.12*" \
   --tags "controlplane"
 ```
 
