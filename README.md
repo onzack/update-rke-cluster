@@ -13,18 +13,31 @@ The playbook uses an aggressive drain command for the nodes and the playbook wil
 
 This early version of the playbook supports only Ubuntu or Debian as operating system.
 # Quick start
+
+## Prerequesites
+- Rancher Server and an RKE Cluster
+- Rancher API information to update Kubernetes via Rancher API
+  - Kubernetes Cluster URL in Rancher is known, e. g. "https://rancher.example.com/v3/clusters/c-asdf"
+  - Cluster Name is known, e. g. "apps-dev"
+  - A Rancher API user, e. g. "token-asdf"
+  - The API user password/token
+- Kubernets CLI (kubectl)
+- The kubeconfig for the Cluster to drain and uncordon nodes
+
+
+## Run the playbooks
 Update all nodes and the kubernetes version:  
 ```
 export PATH_TO_KUBECTL=$(which kubectl)
 git clone https://github.com/onzack/update-rke-cluster.git
 ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
-  -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
   -e kubernetes_cluster_url="https://rancher.example.com/v3/clusters/c-asdf" \
   -e cluster_name="apps-dev" \
   -e rancher_api_username="token-asdf" \
   -e rancher_api_password="asdf321asdf321asdf321asdf321asdf321asdf321asdf321asdf3" \
   -e path_to_kubectl=$PATH_TO_KUBECTL \
   -e path_to_kubeconfig="/home/ansible/kubeconfig"
+  -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
   -e docker_version="20.10.12*" \
   -e pause_seconds_between_workers=300
 ```
@@ -57,10 +70,10 @@ Update only the kubernetes version:
 export PATH_TO_KUBECTL=$(which kubectl)
 git clone https://github.com/onzack/update-rke-cluster.git
 ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
-  -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
   -e kubernetes_cluster_url="https://rancher.example.com/v3/clusters/c-asdf" \
   -e cluster_name="apps-dev" \
   -e rancher_api_username="token-asdf" \
   -e rancher_api_password="asdf321asdf321asdf321asdf321asdf321asdf321asdf321asdf3" \
+  -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
   --tags "kubernetes"
 ```
