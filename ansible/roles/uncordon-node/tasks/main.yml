@@ -6,7 +6,7 @@
   when: ansible_uptime_seconds < 120
 
 - name: "Uncordon worker node"
-  local_action: "command {{ kubectl_full_path }} uncordon {{ inventory_hostname }}"
+  local_action: "command {{ kubectl_downstream }} uncordon {{ inventory_hostname }}"
   
 - name: "Remove old and unused docker images"
   command: docker image prune -af

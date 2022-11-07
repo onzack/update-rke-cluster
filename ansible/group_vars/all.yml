@@ -13,10 +13,11 @@
 #rancher_api_password: "kjf6vasdf1234asdf1234asdf1234asdf1234asdf1234asdf17fpx"
 
 # Define path to kubectl and kubeconfig
-kubectl_full_path: "{{ path_to_kubectl }} --kubeconfig={{ path_to_kubeconfig }}"
+kubectl_downstream: "{{ path_to_kubectl }} --kubeconfig={{ kubeconfig_downstream }}"
+kubectl_local: "{{ path_to_kubectl }} --kubeconfig={{ kubeconfig_local }}"
 
 # Define drain command with options
-kubectl_drain_command: "{{ kubectl_full_path }} drain --ignore-daemonsets --force --grace-period=150 --timeout=300s --delete-emptydir-data"
+kubectl_drain_command: "{{ kubectl_downstream }} drain --ignore-daemonsets --force --grace-period=150 --timeout=300s --delete-emptydir-data"
 
 # Docker version
 #docker_version: 20.10.12*

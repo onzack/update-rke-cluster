@@ -39,5 +39,9 @@
   tags: kubernetes
   gather_facts: no
   tasks:
+    #- include_role:
+    #    name: update-kubernetes-version-api
+    #- include_role:
+    #    name: update-kubernetes-version-api-template
     - include_role:
-        name: update-kubernetes-version
+        name: update-kubernetes-version-kubectl-patch
