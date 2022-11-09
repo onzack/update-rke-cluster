@@ -5,5 +5,5 @@
 
 # Update tasks with kubectl patch
 - name: Update Kubernetes version of a cluster
-  local_action: "command {{ kubectl_local }} patch clusters.v3.management.cattle.io {{ cluster_name }} --type='merge' -p '{\"spec\": {\"rancherKubernetesEngineConfig\": {\"kubernetesVersion\": \"{{ rancher_kubernetes_version }}\"}}}"
+  local_action: "command {{ kubectl_local }} patch clusters.v3.management.cattle.io {{ cluster_name }} --type='merge' -p '{\"spec\": {\"rancherKubernetesEngineConfig\": {\"kubernetesVersion\": \"{{ rancher_kubernetes_version }}\"}}}'"
 

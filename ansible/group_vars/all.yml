@@ -20,8 +20,9 @@ kubectl_local: "{{ path_to_kubectl }} --kubeconfig={{ kubeconfig_local }}"
 kubectl_drain_command: "{{ kubectl_downstream }} drain --ignore-daemonsets --force --grace-period=150 --timeout=300s --delete-emptydir-data"
 
 # Docker version
+docker_package_name: docker.io
 #docker_version: 20.10.12*
 
 # Pause seconds between worker nodes for example to allow cloud native storage to rebalance
 # Default is 5, overwrite it with -e
-pause_seconds_between_workers: 30
+pause_seconds_between_workers: 60
