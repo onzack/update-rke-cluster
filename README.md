@@ -43,7 +43,7 @@ ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e pause_seconds_between_workers=300
 ```
 
-Update all nodes and the kubernetes version (via kubectl path):  
+Update all nodes and the kubernetes version (via kubectl patch):  
 ```
 export PATH_TO_KUBECTL=$(which kubectl)
 git clone https://github.com/onzack/update-rke-cluster.git
@@ -54,7 +54,7 @@ ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e kubeconfig_downstream="/home/ansible/kubeconfig_downstream" \
   -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
   -e docker_package_name="docker.io" \
-  -e docker_version="20.10.12*" \
+  -e docker_version="20.10.12*" \s
   -e pause_seconds_between_workers=300
 ```
 
