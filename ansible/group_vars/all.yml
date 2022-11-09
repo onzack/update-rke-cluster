@@ -6,7 +6,8 @@
 #kubernetes_cluster_url: "https://rancher.example.com/v3/clusters/c-vh2ns"
 # 
 # Rancher RKE cluster name
-#cluster_name: "example-prod"
+#cluster_display_name: "example-prod"
+#cluster_name: "c-asdf"
 
 #Rancher API credencials
 #rancher_api_username: "token-bj8nm"

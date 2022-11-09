@@ -8,7 +8,7 @@
   uri:
     url: "{{ kubernetes_cluster_url }}"
     method: PUT
-    body: "{ \"name\":\"{{ cluster_name }}\", \"answers\":{\"values\":{\"rancherKubernetesEngineConfig.kubernetesVersion\":\"{{ rancher_kubernetes_version }}\"}}, \"clusterTemplateId\":\"{{ rancher_cluster_template_id }}\", \"clusterTemplateRevisionId\":\"{{ rancher_cluster_template_revision_id }}\" }"
+    body: "{ \"name\":\"{{ cluster_display_name }}\", \"answers\":{\"values\":{\"rancherKubernetesEngineConfig.kubernetesVersion\":\"{{ rancher_kubernetes_version }}\"}}, \"clusterTemplateId\":\"{{ rancher_cluster_template_id }}\", \"clusterTemplateRevisionId\":\"{{ rancher_cluster_template_revision_id }}\" }"
     body_format: json
     validate_certs: no
     user: "{{ rancher_api_username }}"

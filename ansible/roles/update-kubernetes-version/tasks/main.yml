@@ -7,7 +7,7 @@
   uri:
     url: "{{ kubernetes_cluster_url }}"
     method: PUT
-    body: "{ \"name\":\"{{ cluster_name }}\", \"rancherKubernetesEngineConfig\":{\"kubernetesVersion\":\"{{ rancher_kubernetes_version }}\"}}"
+    body: "{ \"name\":\"{{ cluster_display_name }}\", \"rancherKubernetesEngineConfig\":{\"kubernetesVersion\":\"{{ rancher_kubernetes_version }}\"}}"
     body_format: json
     validate_certs: no
     user: "{{ rancher_api_username }}"
