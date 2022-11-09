@@ -37,7 +37,7 @@ ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e rancher_api_password="asdf321asdf321asdf321asdf321asdf321asdf321asdf321asdf3" \
   -e path_to_kubectl=$PATH_TO_KUBECTL \
   -e kubeconfig_downstream="/home/ansible/kubeconfig_downstream" \
-  -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
+  -e rancher_kubernetes_version="v1.23.10-rancher1-1" \
   -e docker_package_name="docker.io" \
   -e docker_version="20.10.12*" \
   -e pause_seconds_between_workers=300
@@ -48,11 +48,11 @@ Update all nodes and the kubernetes version (via kubectl patch):
 export PATH_TO_KUBECTL=$(which kubectl)
 git clone https://github.com/onzack/update-rke-cluster.git
 ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
-  -e cluster_name="c-xdabc" \
+  -e cluster_name="c-asdf" \
   -e kubeconfig_local="/home/ansible/kubeconfig_local" \
   -e path_to_kubectl=$PATH_TO_KUBECTL \
   -e kubeconfig_downstream="/home/ansible/kubeconfig_downstream" \
-  -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
+  -e rancher_kubernetes_version="v1.23.10-rancher1-1" \
   -e docker_package_name="docker.io" \
   -e docker_version="20.10.12*" \s
   -e pause_seconds_between_workers=300
@@ -89,10 +89,10 @@ export PATH_TO_KUBECTL=$(which kubectl)
 git clone https://github.com/onzack/update-rke-cluster.git
 ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e kubernetes_cluster_url="https://rancher.example.com/v3/clusters/c-asdf" \
-  -e cluster_name="apps-dev" \
+  -e cluster_display_name="apps-dev" \
   -e rancher_api_username="token-asdf" \
   -e rancher_api_password="asdf321asdf321asdf321asdf321asdf321asdf321asdf321asdf3" \
-  -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
+  -e rancher_kubernetes_version="v1.23.10-rancher1-1" \
   --tags "kubernetes"
 ```
 Update only the kubernetes version (via kubectl patch):  
@@ -101,9 +101,9 @@ export PATH_TO_KUBECTL=$(which kubectl)
 git clone https://github.com/onzack/update-rke-cluster.git
 ansible-playbook -i hosts update-rke-cluster/ansible/update-rke-cluster.yml \
   -e path_to_kubectl=$PATH_TO_KUBECTL \
-  -e cluster_name="c-xdabc" \
+  -e cluster_name="c-asdf" \
   -e kubeconfig_local="/home/ansible/kubeconfig_local" \
-  -e rancher_kubernetes_version="v1.20.4-rancher1-1" \
+  -e rancher_kubernetes_version="v1.23.10-rancher1-1" \
   --tags "kubernetes"
 ```
 
